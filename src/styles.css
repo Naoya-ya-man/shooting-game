@@ -11,12 +11,16 @@ body {
   overflow: hidden;
   touch-action: none;
   overscroll-behavior: none;
-  -webkit-touch-callout: none;
-  /* 長押しメニュー防止 (iOS) */
-  -webkit-user-select: none;
-  /* テキスト選択防止 (iOS) */
+  -webkit-touch-callout: none; /* 長押しメニュー防止 (iOS) */
+  -webkit-user-select: none;   /* テキスト選択防止 (iOS) */
   user-select: none;
+
+  /* ★追加：ゲーム画面を中央寄せ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 
 .game-area {
@@ -25,6 +29,8 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+  max-width: 768px;
+  margin: 0 auto;
   background-image: url("../public/fast-bg.png");
   background-repeat: repeat-y;
   background-size: cover;
@@ -32,7 +38,11 @@ body {
   animation: scrollBg 30s linear infinite;
   overflow: hidden;
   touch-action: none;
+  max-height: 100vh;
+  aspect-ratio: 9 / 16; /* スマホ用比率を維持（縦長画面でも適応） */
+  box-shadow: 0 0 20px #000; /* 視覚的な枠、任意 */
 }
+
 
 @keyframes scrollBg {
   from {
@@ -105,6 +115,15 @@ body {
   left: 10px;
   font-size: 18px;
   z-index: 10;
+}
+
+/* スマホ用のフォントサイズを大きめにする */
+@media screen and (max-width: 768px) {
+  .hud {
+    font-size: 24px;
+    top: 8px;
+    left: 8px;
+  }
 }
 
 .hud.centered {
