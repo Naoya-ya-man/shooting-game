@@ -1,0 +1,255 @@
+/* 共通スタイル */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-touch-callout: none;
+  /* 長押しメニュー防止 (iOS) */
+  -webkit-user-select: none;
+  /* テキスト選択防止 (iOS) */
+  user-select: none;
+}
+
+
+.game-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../public/fast-bg.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-position: center 0;
+  animation: scrollBg 30s linear infinite;
+  overflow: hidden;
+  touch-action: none;
+}
+
+@keyframes scrollBg {
+  from {
+    background-position: center 0;
+  }
+
+  to {
+    background-position: center 1000px;
+  }
+}
+
+/* 敵・ビームなどの要素 */
+.enemy {
+  pointer-events: none;
+}
+
+.bullet {
+  position: absolute;
+  width: 7.5px;
+  height: 30px;
+  background-color: cyan;
+}
+
+.boss {
+  position: absolute;
+  width: 80px;
+  transform: rotate(180deg);
+  pointer-events: none;
+}
+
+.boss-beam {
+  position: absolute;
+  width: 8px;
+  height: 25px;
+  background-color: red;
+}
+
+.explosion {
+  animation: pop 0.3s ease-out;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+@keyframes explode {
+  0% {
+    opacity: 1;
+    transform: scale(0.5) translate(-50%, -50%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.5) translate(-50%, -50%);
+  }
+}
+
+/* HUDなどのUI */
+.hud {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 18px;
+  z-index: 10;
+}
+
+.hud.centered {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  text-align: center;
+}
+
+.boss-hp-bar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 20px;
+  background-color: #444;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.boss-hp-inner {
+  height: 100%;
+  background-color: red;
+  transition: width 0.2s;
+}
+
+.start-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.start-screen p {
+  color: #fff;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.start-button,
+.restart-button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.start-button {
+  background-color: #f33;
+  color: white;
+}
+
+.start-button:hover {
+  background-color: #c00;
+}
+
+.restart-button {
+  margin-top: 1rem;
+  background-color: orange;
+  color: black;
+}
+
+/* スマホ操作用ボタン */
+.mobile-controls {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.mobile-controls button {
+  font-size: 1.5rem;
+  padding: 1rem;
+  background: #333;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+/* 横向きでゲーム表示、縦向きで非表示メッセージを表示 */
+.rotate-message {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 2rem;
+  z-index: 9999;
+}
+
+@media screen and (orientation: portrait) {
+  .game-area {
+    display: none !important;
+  }
+
+  .rotate-message {
+    display: flex !important;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .game-area {
+    display: block !important;
+  }
+
+  .rotate-message {
+    display: none !important;
+  }
+}
+
+
+.touch-controls {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+  z-index: 10;
+}
+
+.touch-controls button {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+}
