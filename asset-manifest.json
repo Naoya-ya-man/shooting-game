@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/shooting-game/static/css/main.13332f0c.css",
+    "main.css": "/shooting-game/static/css/main.889aaf18.css",
     "main.js": "/shooting-game/static/js/main.8f6081de.js",
     "static/media/fast-bg.png": "/shooting-game/static/media/fast-bg.d5f5d680b158eb07fd33.png",
     "index.html": "/shooting-game/index.html",
-    "main.13332f0c.css.map": "/shooting-game/static/css/main.13332f0c.css.map",
+    "main.889aaf18.css.map": "/shooting-game/static/css/main.889aaf18.css.map",
     "main.8f6081de.js.map": "/shooting-game/static/js/main.8f6081de.js.map"
   },
   "entrypoints": [
-    "static/css/main.13332f0c.css",
+    "static/css/main.889aaf18.css",
     "static/js/main.8f6081de.js"
   ]
 }
